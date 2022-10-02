@@ -1,5 +1,6 @@
 # from src.Dirichlet.Initial_deformation.One_domain import loop_sin_deformation
-from src.Dirichlet.Initial_deformation.One_domain import sin_deformation
+# from src.Dirichlet.Initial_deformation.One_domain import deformation
+from src.Dirichlet.Initial_deformation.subdomains import deformation
 # from src.Neumann.Initial_deformation.One_domain import sin_defformation
 from src.Graph import graph
 # from src.Dirichlet.Initial_deformation.subdomains import *
@@ -8,15 +9,19 @@ from src.Graph import graph
 # from src.Neumann.Initial_deformation.One_domain import *
 # from src.Neumann.Initial_deformation.subdomains import *
 # from src.Neumann_Dirichlet.Input_pulse import *
+from dolfin import *
 
-
-num_steps = 60
+num_steps = 100
 dt = 1e-4
-nx = ny = 500
-c2 = 1
+nx = ny = 100
 
-name = f'nsteps_{num_steps}_dt{dt}_nx{nx}_ny_{ny}_c_{c2}_cos'
-path = 'src/Dirichlet/Initial_deformation/One_domain/results/'
+
+name = f'two_domains_sin_nsteps_{num_steps}_dt_{dt}'
+path = 'src/Dirichlet/Initial_deformation/subdomains/results/'
 # loop_sin_deformation.loop_sin_deformation(num_steps, dt, nx, ny, c2)
-sin_deformation.sinusoidal_deformation(num_steps, dt, nx, ny, c2, name, path)
+# deformation.sinusoidal_deformation(num_steps, dt, nx, ny, c2, name, path)
+# graph.graph(path, name, num_steps, step = 1, save=True, plot=False)
+c0 = 100
+c1 = 10
+deformation.sin_deformation(dt, num_steps, name, path, c0, c1)
 graph.graph(path, name, num_steps, step = 1, save=True, plot=False)
