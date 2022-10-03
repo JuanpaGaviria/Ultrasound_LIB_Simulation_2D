@@ -1,7 +1,6 @@
 from fenics import *
 import numpy as np
 import os
-from dolfin import *
 
 
 def cosine_deformation_trapped(num_steps, dt, nx, ny, c2, name, path):

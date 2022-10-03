@@ -5,7 +5,7 @@ from matplotlib import cm
 from mpl_toolkits.mplot3d import Axes3D
 import os
 
-def graph(path, name, num_steps, step, save, plot):
+def graph(path, name, num_steps, lower_limit, upper_limit, step, z_limit, save, plot):
         plt.rcParams["figure.figsize"] = 15, 15
 
         H = np.loadtxt(path + f'{name}/H.txt')
@@ -26,11 +26,13 @@ def graph(path, name, num_steps, step, save, plot):
                 line = ax.set_xlabel('x')
                 line = ax.set_ylabel('y')
                 line = ax.set_zlabel('Amplitude')
-                line = ax.set_zlim(-0.003, 0.003)
+                if z_limit:
+                        line = ax.set_zlim(lower_limit, upper_limit)
 
                 ax = fig.add_subplot(1, 2, 2, projection='3d')
                 surf = ax.plot_surface(XX, YY, Z, cmap='jet')
-                surf = ax.set_zlim(-0.003, 0.003)
+                if z_limit:
+                        surf = ax.set_zlim(lower_limit, upper_limit)
                 surf = ax.set_xlabel('x')
                 surf = ax.set_ylabel('y')
                 surf = ax.set_zlabel('Amplitude')
