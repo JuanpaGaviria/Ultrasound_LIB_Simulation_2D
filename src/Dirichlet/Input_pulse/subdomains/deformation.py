@@ -3,7 +3,7 @@ import numpy as np
 import os
 
 
-def sin_deformation(dt, num_steps, name, path, c0, c1):
+def deformation(dt, num_steps, name, path, c0, c1):
     tol = 1E-14
     input_values = [1, 0.75, 0.5, 0.25, 0, -0.25, -0.5, -0.75, -1]
     mesh = RectangleMesh(Point(-0.005,-0.005),Point(0.005,0.005),50,50)

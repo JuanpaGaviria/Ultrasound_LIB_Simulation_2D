@@ -2,7 +2,8 @@ from fenics import *
 import numpy as np
 import os
 
-def sinusoidal_deformation(num_steps, dt, nx, ny, c, name, path):
+
+def deformation(num_steps, dt, nx, ny, c, name, path):
     tol = 1E-14
     input_values = [1, 0.75, 0.5, 0.25, 0, -0.25, -0.5, -0.75, -1]
     mesh = RectangleMesh(Point(-0.005,-0.005),Point(0.005,0.005),nx,ny)
